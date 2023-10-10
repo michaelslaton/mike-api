@@ -1,12 +1,12 @@
 require("dotenv").config();
  
-const { DEVELOPMENT_URL } = process.env;
+const { REMAZON_DATABASE } = process.env;
 const path = require("path");
 
 module.exports = {
   development: {
     client: "postgresql",
-    connection: DEVELOPMENT_URL,
+    connection: REMAZON_DATABASE,
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
     },
