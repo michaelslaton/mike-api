@@ -3,8 +3,15 @@ const controller = require("./remazon.controller");
 const methodNotAllowed = require("../../errors/methodNotAllowed");
 
 router
-  .route("/")
-  .get(controller.list)
+  .route("/projects")
+  .get(controller.listProjects)
+  .post(controller.createProject)
   .all(methodNotAllowed);
 
-  module.exports = router;
+router
+.route("/employees")
+.get(controller.listEmployees)
+.post(controller.createEmployee)
+.all(methodNotAllowed);
+
+module.exports = router;
