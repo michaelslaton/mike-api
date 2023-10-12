@@ -1,5 +1,4 @@
 const knex = require("../../db/connections");
-
 const projectsDatabase = "rem_projects";
 const employeesDatabase = "rem_employees";
 
@@ -16,7 +15,15 @@ function createProject(project) {
     .insert(project)
     .returning("*")
     .then((data) => data[0]);
-}
+};
+
+function updateProject(id, updateProject) {
+  return knex(projectsDatabase)
+    .where({ id })
+    .update(updateProject)
+    .returning("*")
+    .then((data) => data[0]);
+};
 
 // Employees ------------------------------------------------------------->
 
@@ -31,11 +38,21 @@ function createEmployee(employee) {
     .insert(employee)
     .returning("*")
     .then((data) => data[0]);
-}
+};
+
+function updateEmployee(id, updatedEmployee) {
+  return knex(employeesDatabase)
+    .where({ id })
+    .update(updatedEmployee)
+    .returning("*")
+    .then((data) => data[0]);
+};
 
 module.exports = {
   listProjects,
   createProject,
+  updateProject,
   listEmployees,
   createEmployee,
-}
+  updateEmployee,
+};

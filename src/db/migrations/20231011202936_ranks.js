@@ -1,14 +1,13 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("rem_employees", (table) => {
+  return knex.schema.createTable("rem_ranks", (table) => {
     table.increments("id").primary().unsigned().unique();
     table.string("name").notNullable();
-    table.dateTime("birthday");
-    table.integer("rank").unsigned().notNullable();
+    table.integer("rank").notNullable();
     table.string("description");
     table.timestamps(true, true);
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("rem_employees");
+  return knex.schema.dropTable("rem_ranks");
 };

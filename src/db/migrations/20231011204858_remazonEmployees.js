@@ -1,15 +1,15 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("rem_projects", (table) => {
+  return knex.schema.createTable("rem_employees", (table) => {
     table.increments("id").primary().unsigned().unique();
     table.string("name").notNullable();
-    table.integer("host").notNullable();
-    table.string("type").notNullable();
-    table.string("description").notNullable();
+    table.dateTime("birthday");
+    table.integer("rank").notNullable().defaultTo(5);
+    table.string("description");
     table.boolean("status").notNullable().defaultTo(true);
     table.timestamps(true, true);
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("rem_projects");
+  return knex.schema.dropTable("rem_employees");
 };
