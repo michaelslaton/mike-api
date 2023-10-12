@@ -6,12 +6,14 @@ router
   .route("/projects")
   .get(controller.listProjects)
   .post(controller.createProject)
+  .put(controller.updateProject)
   .all(methodNotAllowed);
 
 router
-.route("/employees")
-.get(controller.listEmployees)
-.post(controller.createEmployee)
-.all(methodNotAllowed);
+  .route("/employees")
+  .get(controller.listEmployees)
+  .post(controller.createEmployee)
+  .put(controller.updateEmployee)
+  .all(methodNotAllowed);
 
 module.exports = router;
