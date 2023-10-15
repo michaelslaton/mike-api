@@ -48,6 +48,20 @@ async function listRanks(req, res) {
   return res.json({data})
 };
 
+// User ------------------------------------------------------------------->
+
+async function getUser(req, res) {
+  const { uid } = req.params;
+  const data = await service.getUser(uid);
+  res.status(200).json({ data });
+};
+
+async function createUser(req,res) {
+  let newUser = req.body;
+  const data = await service.createUser(newUser);
+  res.status(201).json({ data });
+};
+
 module.exports = {
   listProjects: [asyncErrorBoundary(listProjects)],
   createProject: [asyncErrorBoundary(createProject)],
@@ -56,4 +70,6 @@ module.exports = {
   createEmployee: [asyncErrorBoundary(createEmployee)],
   updateEmployee: [asyncErrorBoundary(updateEmployee)],
   listRanks: [asyncErrorBoundary(listRanks)],
+  getUser: [asyncErrorBoundary(getUser)],
+  createUser: [asyncErrorBoundary(createUser)],
 };
