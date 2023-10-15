@@ -1,25 +1,22 @@
 const knex = require("../../db/connections");
-const projectsDatabase = "rem_projects";
-const employeesDatabase = "rem_employees";
-const ranksDatabase = "rem_ranks";
 
 // Projects -------------------------------------------------------------->
 
 function listProjects(){
-  return knex(projectsDatabase)
+  return knex("rem_projects")
   .select("*")
   .orderBy("name");
 };
 
 function createProject(project) {
-  return knex(projectsDatabase)
+  return knex("rem_projects")
     .insert(project)
     .returning("*")
     .then((data) => data[0]);
 };
 
 function updateProject(id, updateProject) {
-  return knex(projectsDatabase)
+  return knex("rem_projects")
     .where({ id })
     .update(updateProject)
     .returning("*")
@@ -29,20 +26,20 @@ function updateProject(id, updateProject) {
 // Employees ------------------------------------------------------------->
 
 function listEmployees(){
-  return knex(employeesDatabase)
+  return knex("rem_employees")
   .select("*")
   .orderBy("rank");
 };
 
 function createEmployee(employee) {
-  return knex(employeesDatabase)
+  return knex("rem_employees")
     .insert(employee)
     .returning("*")
     .then((data) => data[0]);
 };
 
 function updateEmployee(id, updatedEmployee) {
-  return knex(employeesDatabase)
+  return knex("rem_employees")
     .where({ id })
     .update(updatedEmployee)
     .returning("*")
@@ -52,9 +49,23 @@ function updateEmployee(id, updatedEmployee) {
 // Ranks ----------------------------------------------------------------->
 
 function listRanks(){
-  return knex(ranksDatabase)
+  return knex("rem_ranks")
   .select("*")
   .orderBy("rank");
+};
+
+// Users ----------------------------------------------------------------->
+
+function getUser(uid) {
+  return knex("rem_users")
+    .where({ uid });
+};
+
+function createUser(newUser) {
+  return knex("rem_users")
+    .insert(newUser)
+    .returning("*")
+    .then((data) => data[0]);
 };
 
 module.exports = {
@@ -65,4 +76,6 @@ module.exports = {
   createEmployee,
   updateEmployee,
   listRanks,
+  getUser,
+  createUser,
 };

@@ -15,6 +15,16 @@ router
   .post(controller.createEmployee)
   .put(controller.updateEmployee)
   .all(methodNotAllowed);
+    
+router
+  .route("/users")
+  .post(controller.createUser)
+  .all(methodNotAllowed);
+
+router
+  .route("/users/:uid")
+  .get(controller.getUser)
+  .all(methodNotAllowed);
   
 router
   .route("/ranks")
