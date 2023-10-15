@@ -1,6 +1,7 @@
 const knex = require("../../db/connections");
 const projectsDatabase = "rem_projects";
 const employeesDatabase = "rem_employees";
+const ranksDatabase = "rem_ranks";
 
 // Projects -------------------------------------------------------------->
 
@@ -48,6 +49,14 @@ function updateEmployee(id, updatedEmployee) {
     .then((data) => data[0]);
 };
 
+// Ranks ----------------------------------------------------------------->
+
+function listRanks(){
+  return knex(ranksDatabase)
+  .select("*")
+  .orderBy("rank");
+};
+
 module.exports = {
   listProjects,
   createProject,
@@ -55,4 +64,5 @@ module.exports = {
   listEmployees,
   createEmployee,
   updateEmployee,
+  listRanks,
 };
