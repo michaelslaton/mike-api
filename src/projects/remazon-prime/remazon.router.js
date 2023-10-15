@@ -8,12 +8,17 @@ router
   .post(controller.createProject)
   .put(controller.updateProject)
   .all(methodNotAllowed);
-
+  
 router
   .route("/employees")
   .get(controller.listEmployees)
   .post(controller.createEmployee)
   .put(controller.updateEmployee)
+  .all(methodNotAllowed);
+  
+router
+  .route("/ranks")
+  .get(controller.listRanks)
   .all(methodNotAllowed);
 
 module.exports = router;

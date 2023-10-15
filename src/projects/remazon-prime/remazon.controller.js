@@ -41,6 +41,13 @@ async function updateEmployee(req, res) {
   res.status(200).json({ data });
 };
 
+// Ranks ------------------------------------------------------------------>
+
+async function listRanks(req, res) {
+  let data = await service.listRanks();
+  return res.json({data})
+};
+
 module.exports = {
   listProjects: [asyncErrorBoundary(listProjects)],
   createProject: [asyncErrorBoundary(createProject)],
@@ -48,4 +55,5 @@ module.exports = {
   listEmployees: [asyncErrorBoundary(listEmployees)],
   createEmployee: [asyncErrorBoundary(createEmployee)],
   updateEmployee: [asyncErrorBoundary(updateEmployee)],
+  listRanks: [asyncErrorBoundary(listRanks)],
 };
