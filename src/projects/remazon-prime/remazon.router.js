@@ -29,6 +29,8 @@ router
 router
   .route("/ranks")
   .get(controller.listRanks)
+  .post(controller.createRank)
+  .put(controller.updateRank)
   .all(methodNotAllowed);
 
 module.exports = router;
