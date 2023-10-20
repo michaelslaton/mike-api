@@ -16,7 +16,6 @@ async function createProject(req,res) {
 
 async function updateProject(req, res) {
   const updatedProject = req.body;
-  console.log(updatedProject.id)
   const data = await service.updateProject(updatedProject.id, updatedProject);
   res.status(200).json({ data });
 };
@@ -36,7 +35,6 @@ async function createEmployee(req,res) {
 
 async function updateEmployee(req, res) {
   const updatedEmployee = req.body;
-  console.log(updatedEmployee.id)
   const data = await service.updateEmployee(updatedEmployee.id, updatedEmployee);
   res.status(200).json({ data });
 };
@@ -46,6 +44,18 @@ async function updateEmployee(req, res) {
 async function listRanks(req, res) {
   let data = await service.listRanks();
   return res.json({data})
+};
+
+async function createRank(req,res) {
+  let newRank = req.body;
+  const data = await service.createRank(newRank);
+  res.status(201).json({ data });
+};
+
+async function updateRank(req, res) {
+  const updatedRank = req.body;
+  const data = await service.updateRank(updatedRank.id, updatedRank);
+  res.status(200).json({ data });
 };
 
 // User ------------------------------------------------------------------->
@@ -63,13 +73,19 @@ async function createUser(req,res) {
 };
 
 module.exports = {
+  // Projects -------------------------------------------------------------->
   listProjects: [asyncErrorBoundary(listProjects)],
   createProject: [asyncErrorBoundary(createProject)],
   updateProject: [asyncErrorBoundary(updateProject)],
+  // Employees ------------------------------------------------------------->
   listEmployees: [asyncErrorBoundary(listEmployees)],
   createEmployee: [asyncErrorBoundary(createEmployee)],
   updateEmployee: [asyncErrorBoundary(updateEmployee)],
+  // Ranks ------------------------------------------------------------------>
   listRanks: [asyncErrorBoundary(listRanks)],
+  createRank: [asyncErrorBoundary(createRank)],
+  updateRank: [asyncErrorBoundary(updateRank)],
+  // User ------------------------------------------------------------------->
   getUser: [asyncErrorBoundary(getUser)],
   createUser: [asyncErrorBoundary(createUser)],
 };

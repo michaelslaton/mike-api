@@ -54,6 +54,21 @@ function listRanks(){
   .orderBy("rank");
 };
 
+function createRank(newRank) {
+  return knex("rem_ranks")
+    .insert(newRank)
+    .returning("*")
+    .then((data) => data[0]);
+};
+
+function updateRank(id, updatedRank) {
+  return knex("rem_ranks")
+    .where({ id })
+    .update(updatedRank)
+    .returning("*")
+    .then((data) => data[0]);
+};
+
 // Users ----------------------------------------------------------------->
 
 function getUser(uid) {
@@ -72,10 +87,16 @@ module.exports = {
   listProjects,
   createProject,
   updateProject,
+  // Projects -------------------------------------------------------------->
+  // Employees ------------------------------------------------------------->
   listEmployees,
   createEmployee,
   updateEmployee,
+  // Ranks ----------------------------------------------------------------->
   listRanks,
+  createRank,
+  updateRank,
+  // Users ----------------------------------------------------------------->
   getUser,
   createUser,
 };
