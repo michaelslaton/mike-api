@@ -84,10 +84,10 @@ function createUser(newUser) {
 };
 
 module.exports = {
+  // Projects -------------------------------------------------------------->
   listProjects,
   createProject,
   updateProject,
-  // Projects -------------------------------------------------------------->
   // Employees ------------------------------------------------------------->
   listEmployees,
   createEmployee,
