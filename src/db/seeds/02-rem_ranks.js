@@ -3,27 +3,27 @@ exports.seed = function (knex) {
     {
       name: "Ceo",
       rank: 1,
-      description: "",
+      color: "#ffa500",
     },
     {
       name: "Head of Accounting",
       rank: 2,
-      description: "",
+      color: "#ffa500",
     },
     {
       name: "Vice President",
       rank: 3,
-      description: "",
+      color: "#ffa500",
     },
     {
       name: "Shareholder",
       rank: 4,
-      description: "",
+      color: "#ffa500",
     },
     {
       name: "Intern",
       rank: 5,
-      description: "",
+      color: "#ffa500",
     },
   ]);
 };
