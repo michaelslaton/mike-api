@@ -3,7 +3,7 @@ exports.up = function (knex) {
     table.increments("id").primary().unsigned().unique();
     table.string("name").notNullable();
     table.integer("rank").notNullable();
-    table.string("description");
+    table.string("color").defaultTo("#ffa500");
     table.timestamps(true, true);
   });
 };

@@ -73,7 +73,8 @@ function updateRank(id, updatedRank) {
 
 function getUser(uid) {
   return knex("rem_users")
-    .where({ uid });
+    .where({ uid })
+    .then((data) => data[0]);
 };
 
 function createUser(newUser) {
