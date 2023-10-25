@@ -3,6 +3,10 @@ exports.up = function (knex) {
     table.increments("id").primary().unsigned().unique();
     table.string("name").notNullable();
     table.integer("host").notNullable();
+    table
+      .foreign("host")
+      .references("id")
+      .inTable("rem_employees");
     table.string("type").notNullable();
     table.string("description").notNullable();
     table.boolean("status").notNullable().defaultTo(true);
