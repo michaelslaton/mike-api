@@ -3,7 +3,6 @@ exports.up = function (knex) {
     table.increments("id").primary().unsigned().unique();
     table.string("name").notNullable();
     table.string("uid").notNullable();
-    table.integer("employeeNumber").defaultTo(null);
     table.boolean("admin").notNullable().defaultTo(false);
     table.timestamps(true, true);
   });
