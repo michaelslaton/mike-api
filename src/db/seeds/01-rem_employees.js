@@ -3,19 +3,21 @@ exports.seed = function (knex) {
     {
       name: "Rembo",
       birthday: null,
+      uid: "NclXDHnc0HUvpTlVyZjXLNJ4kXu1",
       rank: 1,
+      admin: true,
       description: "It's the boss!",
     },
     {
       name: "Ren",
       birthday: null,
-      rank: 3,
+      uid: "aSwNeBahYsNAEahwZqcjR8EO36b2",
       description: "It's Mike!",
     },
     {
       name: "Wes",
       birthday: null,
-      rank: 2,
+      uid: "Px5kWtye6cNAbyZNQEvTBfe0c6u2",
       description: "Hoobooie!!!",
     },
   ]);

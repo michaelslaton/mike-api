@@ -25,6 +25,12 @@ function updateProject(id, updateProject) {
 
 // Employees ------------------------------------------------------------->
 
+function getEmployee(uid) {
+  return knex("rem_employees")
+    .where({ uid })
+    .then((data) => data[0]);
+};
+
 function listEmployees(){
   return knex("rem_employees")
   .select("*")
@@ -71,12 +77,6 @@ function updateRank(id, updatedRank) {
 
 // Users ----------------------------------------------------------------->
 
-function getUser(uid) {
-  return knex("rem_users")
-    .where({ uid })
-    .then((data) => data[0]);
-};
-
 function createUser(newUser) {
   return knex("rem_users")
     .insert(newUser)
@@ -86,15 +86,15 @@ function createUser(newUser) {
 
 // Applications ---------------------------------------------------------->
 
-function listApplications(){
-  return knex("rem_applications")
+function listNotifications(){
+  return knex("rem_notifications")
   .select("*")
   .orderBy("id");
 };
 
-function createApplication(newApplication) {
-  return knex("rem_applications")
-    .insert(newApplication)
+function createNotification(newNotification) {
+  return knex("rem_notifications")
+    .insert(newNotification)
     .returning("*")
     .then((data) => data[0]);
 };
@@ -105,6 +105,7 @@ module.exports = {
   createProject,
   updateProject,
   // Employees ------------------------------------------------------------->
+  getEmployee,
   listEmployees,
   createEmployee,
   updateEmployee,
@@ -112,10 +113,7 @@ module.exports = {
   listRanks,
   createRank,
   updateRank,
-  // Users ----------------------------------------------------------------->
-  getUser,
-  createUser,
-  // Applications ---------------------------------------------------------->
-  listApplications,
-  createApplication,
+  // Notifications ---------------------------------------------------------->
+  listNotifications,
+  createNotification,
 };

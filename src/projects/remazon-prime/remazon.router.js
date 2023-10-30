@@ -15,15 +15,10 @@ router
   .post(controller.createEmployee)
   .put(controller.updateEmployee)
   .all(methodNotAllowed);
-    
-router
-  .route("/users")
-  .post(controller.createUser)
-  .all(methodNotAllowed);
 
 router
-  .route("/users/:uid")
-  .get(controller.getUser)
+  .route("/employees/:uid")
+  .get(controller.getEmployee)
   .all(methodNotAllowed);
   
 router
@@ -34,9 +29,9 @@ router
   .all(methodNotAllowed);
 
   router
-    .route("/applications")
-    .get(controller.listApplications)
-    .post(controller.createApplication)
+    .route("/notifications")
+    .get(controller.listNotifications)
+    .post(controller.createNotification)
     .all(methodNotAllowed);
 
 module.exports = router;
