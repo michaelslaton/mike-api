@@ -33,4 +33,10 @@ router
   .put(controller.updateRank)
   .all(methodNotAllowed);
 
+  router
+    .route("/applications")
+    .get(controller.listApplications)
+    .post(controller.createApplication)
+    .all(methodNotAllowed);
+
 module.exports = router;

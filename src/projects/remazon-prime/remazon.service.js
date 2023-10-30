@@ -84,6 +84,21 @@ function createUser(newUser) {
     .then((data) => data[0]);
 };
 
+// Applications ---------------------------------------------------------->
+
+function listApplications(){
+  return knex("rem_applications")
+  .select("*")
+  .orderBy("id");
+};
+
+function createApplication(newApplication) {
+  return knex("rem_applications")
+    .insert(newApplication)
+    .returning("*")
+    .then((data) => data[0]);
+};
+
 module.exports = {
   // Projects -------------------------------------------------------------->
   listProjects,
@@ -100,4 +115,7 @@ module.exports = {
   // Users ----------------------------------------------------------------->
   getUser,
   createUser,
+  // Applications ---------------------------------------------------------->
+  listApplications,
+  createApplication,
 };
