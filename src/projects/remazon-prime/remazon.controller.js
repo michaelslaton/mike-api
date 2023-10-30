@@ -72,6 +72,19 @@ async function createUser(req,res) {
   res.status(201).json({ data });
 };
 
+// Applications ------------------------------------------------------------------->
+
+async function listApplications(req, res) {
+  let data = await service.listApplications();
+  return res.json({data})
+};
+
+async function createApplication(req,res) {
+  let newApplication = req.body;
+  const data = await service.createApplication(newApplication);
+  res.status(201).json({ data });
+};
+
 module.exports = {
   // Projects -------------------------------------------------------------->
   listProjects: [asyncErrorBoundary(listProjects)],
@@ -88,4 +101,7 @@ module.exports = {
   // User ------------------------------------------------------------------->
   getUser: [asyncErrorBoundary(getUser)],
   createUser: [asyncErrorBoundary(createUser)],
+  // Applications ----------------------------------------------------------->
+  listApplications: [asyncErrorBoundary(listApplications)],
+  createApplication: [asyncErrorBoundary(createApplication)],
 };
