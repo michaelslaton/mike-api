@@ -22,6 +22,12 @@ async function updateProject(req, res) {
 
 // Employees ------------------------------------------------------------->
 
+async function getEmployee(req, res) {
+  const { uid } = req.params;
+  const data = await service.getEmployee(uid);
+  res.status(200).json({ data });
+};
+
 async function listEmployees(req, res) {
   let data = await service.listEmployees();
   return res.json({data})
@@ -58,30 +64,16 @@ async function updateRank(req, res) {
   res.status(200).json({ data });
 };
 
-// User ------------------------------------------------------------------->
-
-async function getUser(req, res) {
-  const { uid } = req.params;
-  const data = await service.getUser(uid);
-  res.status(200).json({ data });
-};
-
-async function createUser(req,res) {
-  let newUser = req.body;
-  const data = await service.createUser(newUser);
-  res.status(201).json({ data });
-};
-
 // Applications ------------------------------------------------------------------->
 
-async function listApplications(req, res) {
-  let data = await service.listApplications();
+async function listNotifications(req, res) {
+  let data = await service.listNotifications();
   return res.json({data})
 };
 
-async function createApplication(req,res) {
-  let newApplication = req.body;
-  const data = await service.createApplication(newApplication);
+async function createNotification(req,res) {
+  let newNotification = req.body;
+  const data = await service.createNotification(newNotification);
   res.status(201).json({ data });
 };
 
@@ -91,6 +83,7 @@ module.exports = {
   createProject: [asyncErrorBoundary(createProject)],
   updateProject: [asyncErrorBoundary(updateProject)],
   // Employees ------------------------------------------------------------->
+  getEmployee: [asyncErrorBoundary(getEmployee)],
   listEmployees: [asyncErrorBoundary(listEmployees)],
   createEmployee: [asyncErrorBoundary(createEmployee)],
   updateEmployee: [asyncErrorBoundary(updateEmployee)],
@@ -98,10 +91,7 @@ module.exports = {
   listRanks: [asyncErrorBoundary(listRanks)],
   createRank: [asyncErrorBoundary(createRank)],
   updateRank: [asyncErrorBoundary(updateRank)],
-  // User ------------------------------------------------------------------->
-  getUser: [asyncErrorBoundary(getUser)],
-  createUser: [asyncErrorBoundary(createUser)],
-  // Applications ----------------------------------------------------------->
-  listApplications: [asyncErrorBoundary(listApplications)],
-  createApplication: [asyncErrorBoundary(createApplication)],
+  // Notifications ----------------------------------------------------------->
+  listNotifications: [asyncErrorBoundary(listNotifications)],
+  createNotification: [asyncErrorBoundary(createNotification)],
 };

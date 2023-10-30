@@ -10,6 +10,7 @@ exports.up = function (knex) {
     table.string("type").notNullable();
     table.string("description").notNullable();
     table.boolean("status").notNullable().defaultTo(true);
+    table.boolean("locked").notNullable().defaultTo(false);
     table.timestamps(true, true);
   });
 };
