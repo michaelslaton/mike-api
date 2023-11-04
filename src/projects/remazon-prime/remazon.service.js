@@ -4,8 +4,17 @@ const knex = require("../../db/connections");
 
 function listProjects(){
   return knex("rem_projects")
-  .select("*")
-  .orderBy("name");
+  .select(
+    "rem_projects.id",
+    "rem_projects.name",
+    "rem_projects.host as hostId",
+    "rem_employees.name as host",
+    "rem_projects.type",
+    "rem_projects.description",
+    "rem_projects.status"
+    )
+    .innerJoin("rem_employees", "rem_projects.id", "rem_employees.id")
+  .orderBy("rem_projects.id");
 };
 
 function createProject(project) {
