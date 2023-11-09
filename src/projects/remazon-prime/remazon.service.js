@@ -7,13 +7,13 @@ function listProjects(){
   .select(
     "rem_projects.id",
     "rem_projects.name",
-    "rem_projects.host as hostId",
     "rem_employees.name as host",
+    "rem_projects.host as hostId",
     "rem_projects.type",
     "rem_projects.description",
     "rem_projects.status"
     )
-    .innerJoin("rem_employees", "rem_projects.id", "rem_employees.id")
+    .innerJoin("rem_employees", "rem_projects.host", "rem_employees.id")
   .orderBy("rem_projects.id");
 };
 
